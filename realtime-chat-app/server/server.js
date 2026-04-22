@@ -8,11 +8,12 @@ const { v4: uuidv4 } = require("uuid");
 
 const app = express();
 app.use(cors());
+require("dotenv").config();
 
 const server = http.createServer(app);
 
 // MongoDB connection
-mongoose.connect(MONGO_URI)
+mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.log(err));
 
